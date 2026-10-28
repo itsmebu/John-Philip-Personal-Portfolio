@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>John Philip V. Parilla | BSIT Student &amp; Web Developer</title>
+<meta name="description" content="Portfolio of John Philip V. Parilla, BS Information Technology student who builds web and mobile apps.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#fff;--fg:#000;--mute:#666;--line:#d9d9d9;--card:#f4f4f4}
+[data-theme="dark"]{--bg:#000;--fg:#fff;--mute:#9a9a9a;--line:#2a2a2a;--card:#111}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:72px}
+body{background:var(--bg);color:var(--fg);font-family:"Space Grotesk",system-ui,sans-serif;line-height:1.6;transition:background .3s,color .3s;overflow-x:hidden}
+a{color:inherit}
+img{max-width:100%;display:block}
+:focus-visible{outline:2px solid var(--fg);outline-offset:3px}
+.wrap{max-width:1080px;margin:0 auto;padding:0 24px}
+section{padding:96px 0}
+h2{font-size:clamp(2rem,5vw,3.2rem);line-height:1.1;letter-spacing:-.02em;margin-bottom:40px}
+
+/* nav */
+header{position:fixed;inset:0 0 auto;z-index:50;background:color-mix(in srgb,var(--bg) 85%,transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+nav{display:flex;align-items:center;justify-content:space-between;height:64px}
+.logo{font-weight:700;text-decoration:none;letter-spacing:-.02em}
+.links{display:flex;gap:28px;align-items:center;list-style:none}
+.links a{text-decoration:none;font-size:.95rem;color:var(--mute);transition:color .2s}
+.links a:hover,.links a.active{color:var(--fg)}
+.icon-btn{background:none;border:1px solid var(--line);color:var(--fg);width:38px;height:38px;border-radius:50%;cursor:pointer;display:grid;place-items:center}
+.icon-btn:hover{background:var(--fg);color:var(--bg)}
+.burger{display:none}
+#themeBtn .moon{display:none}
+[data-theme="dark"] #themeBtn .sun{display:none}
+[data-theme="dark"] #themeBtn .moon{display:block}
+
+/* hero */
+.hero{min-height:100vh;display:flex;align-items:center;padding-top:96px}
+.hero .wrap{display:grid;grid-template-columns:1.4fr 1fr;gap:48px;align-items:center}
+.hero h1{font-size:clamp(3rem,9vw,7rem);line-height:.92;letter-spacing:-.04em;font-weight:700}
+.hero h1 span{display:block;overflow:hidden}
+.hero h1 span i{display:block;font-style:normal;transform:translateY(105%);animation:rise .9s cubic-bezier(.2,.8,.2,1) forwards}
+.hero h1 span:nth-child(2) i{animation-delay:.12s}
+.hero h1 span:nth-child(3) i{animation-delay:.24s}
+@keyframes rise{to{transform:none}}
+.role{margin:28px 0 8px;font-size:1.25rem}
+.loc{color:var(--mute)}
+.cta{display:flex;gap:12px;flex-wrap:wrap;margin-top:32px}
+.btn{display:inline-block;padding:13px 26px;border:1px solid var(--fg);border-radius:999px;text-decoration:none;font:inherit;font-weight:500;cursor:pointer;background:none;color:var(--fg);transition:background .2s,color .2s}
+.btn.solid{background:var(--fg);color:var(--bg)}
+.btn:hover{background:var(--fg);color:var(--bg)}
+.btn.solid:hover{background:none;color:var(--fg)}
+.photo{aspect-ratio:1/1;width:100%;max-width:380px;justify-self:center;border-radius:50%;overflow:hidden;background:var(--card);border:1px solid var(--line);position:relative}
+.photo img{width:100%;height:100%;object-fit:cover;filter:grayscale(1) contrast(1.05)}
+.photo .initials{position:absolute;inset:0;display:none;place-items:center;font-size:6rem;font-weight:700;letter-spacing:-.05em}
+
+/* about */
+.about{display:grid;grid-template-columns:1fr 1fr;gap:48px}
+.about p{font-size:1.15rem;margin-bottom:16px}
+.edu{border-top:1px solid var(--line);padding-top:20px}
+.edu b{display:block;font-size:1.15rem}
+.edu span{color:var(--mute)}
+.edu+.edu{margin-top:20px}
+
+/* skills */
+.skills{display:grid;grid-template-columns:repeat(2,1fr);gap:28px 56px}
+.skill .top{display:flex;justify-content:space-between;margin-bottom:8px;font-weight:500}
+.bar{height:4px;background:var(--line);border-radius:4px;overflow:hidden}
+.bar i{display:block;height:100%;width:0;background:var(--fg);border-radius:4px;transition:width 1.4s cubic-bezier(.2,.8,.2,1)}
+
+/* projects */
+.project{display:grid;grid-template-columns:1.2fr 1fr;gap:40px;align-items:center;border:1px solid var(--line);border-radius:20px;padding:24px;background:var(--card)}
+.shot{border:1px solid var(--line);border-radius:12px;overflow:hidden;background:var(--bg);aspect-ratio:16/10;position:relative}
+.shot img{width:100%;height:100%;object-fit:cover}
+.mock{position:absolute;inset:0;padding:14px;display:grid;grid-template-rows:auto 1fr;gap:10px}
+.mock .bar2{height:10px;width:40%;background:var(--fg);border-radius:6px}
+.mock .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.mock .grid div{border:1px solid var(--line);border-radius:8px;background:var(--card)}
+.mock .grid div:first-child{background:var(--fg)}
+.project+.project{margin-top:32px}
+.project h3{font-size:1.5rem;line-height:1.2;margin-bottom:12px}
+.project p{color:var(--mute);margin-bottom:16px}
+.tags{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:24px}
+.tags span{border:1px solid var(--line);border-radius:999px;padding:3px 12px;font-size:.85rem}
+
+/* contact */
+.contact{display:grid;grid-template-columns:1fr 1.2fr;gap:48px}
+.contact .info p{margin-bottom:8px;color:var(--mute)}
+.contact .info a{font-size:1.1rem}
+.social{display:flex;gap:12px;margin-top:24px}
+form{display:grid;gap:14px}
+label{font-size:.9rem;color:var(--mute)}
+input,textarea{width:100%;font:inherit;color:var(--fg);background:var(--bg);border:1px solid var(--line);border-radius:12px;padding:12px 14px;margin-top:4px}
+input:focus,textarea:focus{outline:none;border-color:var(--fg)}
+textarea{min-height:140px;resize:vertical}
+#status{min-height:1.5em;font-size:.95rem}
+footer{border-top:1px solid var(--line);padding:28px 0;color:var(--mute);font-size:.9rem}
+
+/* send button loading spinner */
+.btn:disabled{cursor:progress}
+.btn.loading{position:relative;color:transparent!important;pointer-events:none}
+.btn.loading::after{content:"";position:absolute;top:50%;left:50%;width:20px;height:20px;margin:-10px 0 0 -10px;border:2px solid var(--bg);border-top-color:transparent;border-radius:50%;animation:spin .7s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+/* resume modal */
+.modal{position:fixed;inset:0;z-index:200;display:none;align-items:center;justify-content:center;padding:20px;background:rgba(0,0,0,.75);backdrop-filter:blur(6px)}
+.modal.open{display:flex;animation:fade .25s}
+@keyframes fade{from{opacity:0}}
+.modal .box{background:var(--bg);color:var(--fg);border:1px solid var(--line);border-radius:16px;width:min(760px,100%);max-height:92vh;display:flex;flex-direction:column;overflow:hidden}
+.modal .bar3{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:14px 18px;border-bottom:1px solid var(--line)}
+.modal .bar3 b{font-size:1.1rem}
+.modal .bar3 div{display:flex;gap:10px;align-items:center}
+.modal .btn{padding:8px 18px}
+.modal .body{overflow:auto;padding:18px;background:var(--card)}
+.modal .body img{width:100%;height:auto;border:1px solid var(--line);background:#fff}
+.modal .miss{display:none;padding:40px 10px;text-align:center;color:var(--mute)}
+body.lock{overflow:hidden}
+/* scroll background */
+.bgimg{position:fixed;inset:-40px;z-index:-1;background:center/cover no-repeat;filter:grayscale(1) blur(28px);opacity:0;pointer-events:none;will-change:opacity}
+section,footer{background:transparent}
+/* reveal + cursor */
+.reveal{opacity:0;transform:translateY(24px);transition:opacity .8s,transform .8s}
+.reveal.in{opacity:1;transform:none}
+.cursor,.cursor-dot{position:fixed;top:0;left:0;pointer-events:none;z-index:999;border-radius:50%;background:#fff;mix-blend-mode:difference;display:none}
+.cursor{width:36px;height:36px;margin:-18px 0 0 -18px;transition:width .25s,height .25s,margin .25s}
+.cursor.big{width:72px;height:72px;margin:-36px 0 0 -36px}
+.cursor-dot{width:6px;height:6px;margin:-3px 0 0 -3px}
+@media (hover:hover) and (pointer:fine){.has-cursor .cursor,.has-cursor .cursor-dot{display:block}.has-cursor,.has-cursor a,.has-cursor button{cursor:none}.has-cursor input,.has-cursor textarea{cursor:text}}
+
+@media (max-width:800px){
+  section{padding:72px 0}
+  .burger{display:grid}
+  .links{position:fixed;inset:64px 0 auto;flex-direction:column;gap:0;background:var(--bg);border-bottom:1px solid var(--line);padding:8px 24px 20px;transform:translateY(-120%);transition:transform .3s;align-items:flex-start}
+  .links.open{transform:none}
+  .links li{width:100%;padding:12px 0;border-bottom:1px solid var(--line)}
+  .hero .wrap,.about,.project,.contact,.skills{grid-template-columns:1fr}
+  .photo{max-width:260px;order:-1}
+  .hero{align-items:flex-start}
+}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.reveal{opacity:1;transform:none}.hero h1 span i{transform:none}html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+<div class="bgimg" id="bgimg" aria-hidden="true"></div>
+<div class="cursor" aria-hidden="true"></div><div class="cursor-dot" aria-hidden="true"></div>
+
+<header>
+  <nav class="wrap" aria-label="Main">
+    <a href="#home" class="logo">JP.</a>
+    <ul class="links" id="links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#contact">Contact</a></li>
+      <li><button class="icon-btn" id="themeBtn" aria-label="Switch between dark and light mode">
+        <svg class="sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+        <svg class="moon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.8A9 9 0 1 1 11.2 3 7 7 0 0 0 21 12.8z"/></svg>
+      </button></li>
+    </ul>
+    <button class="icon-btn burger" id="burger" aria-label="Open menu" aria-expanded="false">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 7h18M3 12h18M3 17h18"/></svg>
+    </button>
+  </nav>
+</header>
+
+<main>
+<section class="hero" id="home">
+  <div class="wrap">
+    <div>
+      <h1 aria-label="John Philip V. Parilla"><span><i>John</i></span><span><i>Philip V.</i></span><span><i>Parilla</i></span></h1>
+      <p class="role">BS Information Technology student who builds web and mobile apps.</p>
+      <p class="loc">Tamiao, Bantayan, Cebu</p>
+      <div class="cta">
+        <a class="btn solid" href="#projects">See my work</a>
+        <button class="btn" type="button" id="resumeBtn" aria-haspopup="dialog">Resume</button>
+      </div>
+    </div>
+    <div class="photo">
+      <!-- Image file: images/profile.png -->
+      <img src="images/profile.png" alt="Portrait of John Philip Parilla" onerror="this.style.display='none';this.nextElementSibling.style.display='grid'">
+      <div class="initials" aria-hidden="true">JP</div>
+    </div>
+  </div>
+</section>
+
+<section id="about">
+  <div class="wrap">
+    <h2 class="reveal">About me</h2>
+    <div class="about reveal">
+      <div>
+        <p>I love creating websites and mobile apps. I enjoy turning an idea into something people can open, tap, and use.</p>
+        <p>I'm a BSIT student working with PHP, MySQL, JavaScript, and React, and I'm looking for chances to build real projects and learn from a team.</p>
+      </div>
+      <div>
+        <div class="edu"><b>BS Information Technology</b><span>Madridejos Community College, 2026–2027</span></div>
+        <div class="edu"><b>Experience and certificates</b><span>None yet. I'm ready for my first internship.</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="skills">
+  <div class="wrap">
+    <h2 class="reveal">Skills</h2>
+    <div class="skills reveal" id="skillList"></div>
+  </div>
+</section>
+
+<section id="projects">
+  <div class="wrap">
+    <h2 class="reveal">Projects</h2>
+    <article class="project reveal">
+      <div class="shot">
+        <!-- Image file: images/lugawmaster.png -->
+        <img src="images/lugawmaster.png" alt="Screenshot of the Lugaw Master ordering system" onerror="this.style.display='none'">
+        <div class="mock" aria-hidden="true"><div class="bar2"></div><div class="grid"><div></div><div></div><div></div><div></div><div></div><div></div></div></div>
+      </div>
+      <div>
+        <h3>Online Ordering and Delivery Management System for Lugaw Master, with AI Chatbot</h3>
+        <p>A web system where customers order food online and the shop manages deliveries. An AI chatbot answers customer questions.</p>
+        <div class="tags"><span>PHP</span><span>MySQL</span><span>JavaScript</span><span>CSS</span></div>
+        <div class="cta" style="margin-top:0">
+          <a class="btn solid" href="https://masterlugaw.com/" target="_blank" rel="noopener">Visit website</a>
+        </div>
+      </div>
+    </article>
+    <article class="project reveal">
+      <div class="shot">
+        <!-- Image file: images/mebu.png -->
+        <img src="images/mebu.png" alt="Screenshot of the MEBU Expense Tracker" onerror="this.style.display='none'">
+        <div class="mock" aria-hidden="true"><div class="bar2"></div><div class="grid"><div></div><div></div><div></div><div></div><div></div><div></div></div></div>
+      </div>
+      <div>
+        <h3>MEBU Expense Tracker</h3>
+        <p>A mobile app for logging daily expenses and seeing where your money goes. It works offline and online, and syncs to the cloud with Firebase when you reconnect.</p>
+        <div class="tags"><span>React</span><span>Firebase</span><span>JavaScript</span><span>TypeScript</span><span>Mobile app</span><span>Offline + online</span></div>
+        <div class="cta" style="margin-top:0">
+          <a class="btn solid" href="https://github.com/itsmebu/itsmebu-Mebu_Expensetracker_v3.2.0/releases/tag/v3.2.0" target="_blank" rel="noopener">Download app</a>
+        </div>
+      </div>
+    </article>
+    <article class="project reveal">
+      <div class="shot">
+        <!-- Image file: images/pinpoint.png -->
+        <img src="images/pinpoint.png" alt="Screenshot of PinPoint Bantayan Island" onerror="this.style.display='none'">
+        <div class="mock" aria-hidden="true"><div class="bar2"></div><div class="grid"><div></div><div></div><div></div><div></div><div></div><div></div></div></div>
+      </div>
+      <div>
+        <h3>PinPoint Bantayan Island</h3>
+        <p>A website that helps visitors find places and things to do around Bantayan Island.</p>
+        <div class="tags"><span>HTML</span><span>PHP</span><span>CSS</span><span>JavaScript</span><span>MySQL</span></div>
+        <div class="cta" style="margin-top:0">
+          <a class="btn solid" href="https://pinpointbantayanisland.unaux.com/" target="_blank" rel="noopener">Visit website</a>
+        </div>
+      </div>
+    </article>
+    <article class="project reveal">
+      <div class="shot">
+        <!-- Image file: images/appdevcompass.png -->
+        <img src="images/appdevcompass.png" alt="Screenshot of AppDevCompass" onerror="this.style.display='none'">
+        <div class="mock" aria-hidden="true"><div class="bar2"></div><div class="grid"><div></div><div></div><div></div><div></div><div></div><div></div></div></div>
+      </div>
+      <div>
+        <h3>AppDevCompass</h3>
+        <p>A step-by-step guide for building a mobile app with React and Firebase, from the first setup to a finished app.</p>
+        <div class="tags"><span>HTML</span><span>CSS</span><span>JavaScript</span></div>
+        <div class="cta" style="margin-top:0">
+          <a class="btn solid" href="https://itsmebu.github.io/AppDevCompass/" target="_blank" rel="noopener">Visit website</a>
+        </div>
+      </div>
+    </article>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="wrap">
+    <h2 class="reveal">Let's work together</h2>
+    <div class="contact reveal">
+      <div class="info">
+        <p>Email</p>
+        <a href="mailto:parillajohnphilip2@gmail.com">parillajohnphilip2@gmail.com</a>
+        <p style="margin-top:20px">Location</p>
+        <span>Tamiao, Bantayan, Cebu</span>
+        <div class="social">
+          <a class="icon-btn" href="https://github.com/itsmebu" target="_blank" rel="noopener" aria-label="GitHub"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5a11.5 11.5 0 0 0-3.64 22.41c.58.1.79-.25.79-.56v-2c-3.2.7-3.88-1.37-3.88-1.37-.52-1.33-1.28-1.69-1.28-1.69-1.04-.71.08-.7.08-.7 1.16.08 1.77 1.19 1.77 1.19 1.03 1.76 2.7 1.25 3.36.96.1-.75.4-1.25.73-1.54-2.55-.29-5.24-1.28-5.24-5.69 0-1.26.45-2.29 1.19-3.1-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.18 1.18a11 11 0 0 1 5.78 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.59.23 2.76.11 3.05.74.81 1.19 1.84 1.19 3.1 0 4.42-2.69 5.39-5.25 5.68.41.36.78 1.06.78 2.14v3.17c0 .31.21.67.8.56A11.5 11.5 0 0 0 12 .5z"/></svg></a>
+          <a class="icon-btn" href="https://www.facebook.com/johnfhilip.parilla" target="_blank" rel="noopener" aria-label="Facebook"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M13.5 22v-8.2h2.8l.5-3.3h-3.3V8.4c0-.9.4-1.7 1.8-1.7h1.6V3.8S15.6 3.5 14.2 3.5c-2.9 0-4.5 1.7-4.5 4.8v2.2H7v3.3h2.7V22z"/></svg></a>
+          <a class="icon-btn" href="mailto:parillajohnphilip2@gmail.com" aria-label="Email"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg></a>
+        </div>
+      </div>
+      <form id="form" novalidate>
+        <label>Your name<input name="name" required autocomplete="name"></label>
+        <label>Your email<input name="email" type="email" required autocomplete="email"></label>
+        <label>Message<textarea name="message" required></textarea></label>
+        <button class="btn solid" type="submit">Send message</button>
+        <p id="status" role="status"></p>
+      </form>
+    </div>
+  </div>
+</section>
+</main>
+
+<div class="modal" id="resumeModal" role="dialog" aria-modal="true" aria-labelledby="resumeTitle">
+  <div class="box">
+    <div class="bar3">
+      <b id="resumeTitle">My resume</b>
+      <div>
+        <!-- PDF file: resume.pdf (same folder as index.html) -->
+        <a class="btn solid" href="resume.pdf" download="John_Philip_Parilla_Resume.pdf">Download</a>
+        <button class="icon-btn" id="resumeClose" type="button" aria-label="Close resume"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 5l14 14M19 5L5 19"/></svg></button>
+      </div>
+    </div>
+    <div class="body">
+      <!-- Image file: images/resume.png -->
+      <img src="images/resume.png" alt="Resume of John Philip V. Parilla" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
+      <p class="miss">Resume image not found. Add it as images/resume.png.</p>
+    </div>
+  </div>
+</div>
+
+<footer><div class="wrap">© <span id="yr"></span> John Philip V. Parilla</div></footer>
+
+<script>
+const $=(s,e=document)=>e.querySelector(s), $$=(s,e=document)=>[...e.querySelectorAll(s)];
+
+/* ---- Settings you can edit ---- */
+const FORM_ENDPOINT = "https://formsubmit.co/ajax/parillajohnphilip2@gmail.com"; // messages are delivered to this Gmail
+const SKILLS = {HTML:90,CSS:85,JavaScript:75,PHP:75,MySQL:70,"Git & GitHub":70,React:55,Firebase:65};
+
+/* ---- Theme ---- */
+const root=document.documentElement;
+let saved=null; try{saved=localStorage.getItem("theme")}catch(e){}
+root.dataset.theme = saved || (matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light");
+$("#themeBtn").onclick=()=>{
+  root.dataset.theme = root.dataset.theme==="dark"?"light":"dark";
+  try{localStorage.setItem("theme",root.dataset.theme)}catch(e){}
+};
+
+/* ---- Blurred photo background that fades in on scroll ---- */
+const bg=$("#bgimg"), probe=new Image();
+probe.onload=()=>{
+  bg.style.backgroundImage=`url("${probe.src}")`;
+  const upd=()=>{bg.style.opacity=Math.min(scrollY/(innerHeight*.6),1)*.45};
+  addEventListener("scroll",upd,{passive:true});upd();
+};
+probe.src="images/profile.png";
+
+/* ---- Mobile menu ---- */
+const links=$("#links"), burger=$("#burger");
+burger.onclick=()=>{const o=links.classList.toggle("open");burger.setAttribute("aria-expanded",o)};
+$$("#links a").forEach(a=>a.addEventListener("click",()=>{links.classList.remove("open");burger.setAttribute("aria-expanded",false)}));
+
+/* ---- Skills ---- */
+$("#skillList").innerHTML=Object.entries(SKILLS).map(([n,v])=>
+  `<div class="skill"><div class="top"><span>${n}</span><span>${v}%</span></div><div class="bar"><i data-w="${v}"></i></div></div>`).join("");
+
+/* ---- Scroll reveal + skill bars ---- */
+const io=new IntersectionObserver(es=>es.forEach(e=>{
+  if(!e.isIntersecting)return;
+  e.target.classList.add("in");
+  $$(".bar i",e.target).forEach(b=>b.style.width=b.dataset.w+"%");
+  io.unobserve(e.target);
+}),{threshold:.2});
+$$(".reveal").forEach(el=>io.observe(el));
+
+/* ---- Active nav link ---- */
+const secs=$$("main section[id]");
+const so=new IntersectionObserver(es=>es.forEach(e=>{
+  if(e.isIntersecting)$$("#links a").forEach(a=>a.classList.toggle("active",a.getAttribute("href")==="#"+e.target.id));
+}),{rootMargin:"-45% 0px -50% 0px"});
+secs.forEach(s=>so.observe(s));
+
+/* ---- Custom cursor ---- */
+if(matchMedia("(hover:hover) and (pointer:fine)").matches){
+  document.body.classList.add("has-cursor");
+  const c=$(".cursor"),d=$(".cursor-dot");let x=0,y=0,cx=0,cy=0;
+  addEventListener("mousemove",e=>{x=e.clientX;y=e.clientY;d.style.transform=`translate(${x}px,${y}px)`});
+  (function loop(){cx+=(x-cx)*.15;cy+=(y-cy)*.15;c.style.transform=`translate(${cx}px,${cy}px)`;requestAnimationFrame(loop)})();
+  $$("a,button,input,textarea").forEach(el=>{
+    el.addEventListener("mouseenter",()=>c.classList.add("big"));
+    el.addEventListener("mouseleave",()=>c.classList.remove("big"));
+  });
+}
+
+/* ---- Resume modal ---- */
+const modal=$("#resumeModal"), rBtn=$("#resumeBtn");
+const openResume=()=>{modal.classList.add("open");document.body.classList.add("lock");$("#resumeClose").focus()};
+const closeResume=()=>{modal.classList.remove("open");document.body.classList.remove("lock");rBtn.focus()};
+rBtn.addEventListener("click",openResume);
+$("#resumeClose").addEventListener("click",closeResume);
+modal.addEventListener("click",e=>{if(e.target===modal)closeResume()});
+addEventListener("keydown",e=>{if(e.key==="Escape"&&modal.classList.contains("open"))closeResume()});
+
+/* ---- Contact form ---- */
+$("#form").addEventListener("submit",async e=>{
+  e.preventDefault();
+  const f=e.target,s=$("#status"),d=Object.fromEntries(new FormData(f));
+  if(!d.name.trim()||!/^\S+@\S+\.\S+$/.test(d.email)||!d.message.trim()){s.textContent="Enter your name, a valid email, and a message.";return}
+  if(!FORM_ENDPOINT){
+    location.href=`mailto:parillajohnphilip2@gmail.com?subject=${encodeURIComponent("Portfolio message from "+d.name)}&body=${encodeURIComponent(d.message+"\n\n"+d.name+" ("+d.email+")")}`;
+    s.textContent="Opening your email app to send the message.";return;
+  }
+  s.textContent="Sending...";const btn=f.querySelector("button[type=submit]");btn.classList.add("loading");btn.disabled=true;
+  try{
+    const r=await fetch(FORM_ENDPOINT,{method:"POST",headers:{"Content-Type":"application/json",Accept:"application/json"},body:JSON.stringify({...d,_subject:"New portfolio message from "+d.name,_template:"table",_captcha:"false"})});
+    const j=await r.json().catch(()=>({}));if(!r.ok||j.success==="false")throw 0; s.textContent="Message sent. Thank you!"; f.reset();
+  }catch{s.textContent="Message not sent. Please email me directly at parillajohnphilip2@gmail.com."}finally{btn.classList.remove("loading");btn.disabled=false}
+});
+
+$("#yr").textContent=new Date().getFullYear();
+</script>
+</body>
+</html>
