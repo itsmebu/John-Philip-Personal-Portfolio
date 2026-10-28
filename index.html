@@ -78,11 +78,6 @@ nav{display:flex;align-items:center;justify-content:space-between;height:64px}
 .project{display:grid;grid-template-columns:1.2fr 1fr;gap:40px;align-items:center;border:1px solid var(--line);border-radius:20px;padding:24px;background:var(--card)}
 .shot{border:1px solid var(--line);border-radius:12px;overflow:hidden;background:var(--bg);aspect-ratio:16/10;position:relative}
 .shot img{width:100%;height:100%;object-fit:cover}
-.mock{position:absolute;inset:0;padding:14px;display:grid;grid-template-rows:auto 1fr;gap:10px}
-.mock .bar2{height:10px;width:40%;background:var(--fg);border-radius:6px}
-.mock .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
-.mock .grid div{border:1px solid var(--line);border-radius:8px;background:var(--card)}
-.mock .grid div:first-child{background:var(--fg)}
 .project+.project{margin-top:32px}
 .project h3{font-size:1.5rem;line-height:1.2;margin-bottom:12px}
 .project p{color:var(--mute);margin-bottom:16px}
@@ -243,7 +238,6 @@ section{background:transparent}
       <div class="shot">
         <!-- Image file: lugawmaster.png -->
         <img src="lugawmaster.png" alt="Screenshot of the Lugaw Master ordering system" onerror="this.style.display='none'">
-        <div class="mock" aria-hidden="true"><div class="bar2"></div><div class="grid"><div></div><div></div><div></div><div></div><div></div><div></div></div></div>
       </div>
       <div>
         <h3>Online Ordering and Delivery Management System for Lugaw Master, with AI Chatbot</h3>
@@ -258,7 +252,6 @@ section{background:transparent}
       <div class="shot">
         <!-- Image file: mebu.png -->
         <img src="mebu.png" alt="Screenshot of the MEBU Expense Tracker" onerror="this.style.display='none'">
-        <div class="mock" aria-hidden="true"><div class="bar2"></div><div class="grid"><div></div><div></div><div></div><div></div><div></div><div></div></div></div>
       </div>
       <div>
         <h3>MEBU Expense Tracker</h3>
@@ -273,7 +266,6 @@ section{background:transparent}
       <div class="shot">
         <!-- Image file: pinpoint.png -->
         <img src="pinpoint.png" alt="Screenshot of PinPoint Bantayan Island" onerror="this.style.display='none'">
-        <div class="mock" aria-hidden="true"><div class="bar2"></div><div class="grid"><div></div><div></div><div></div><div></div><div></div><div></div></div></div>
       </div>
       <div>
         <h3>PinPoint Bantayan Island</h3>
@@ -288,7 +280,6 @@ section{background:transparent}
       <div class="shot">
         <!-- Image file: appdevcompass.png -->
         <img src="appdevcompass.png" alt="Screenshot of AppDevCompass" onerror="this.style.display='none'">
-        <div class="mock" aria-hidden="true"><div class="bar2"></div><div class="grid"><div></div><div></div><div></div><div></div><div></div><div></div></div></div>
       </div>
       <div>
         <h3>AppDevCompass</h3>
@@ -303,7 +294,6 @@ section{background:transparent}
       <div class="shot">
         <!-- Image file: note.png -->
         <img src="note.png" alt="Screenshot of NoteConnect AI" onerror="this.style.display='none'">
-        <div class="mock" aria-hidden="true"><div class="bar2"></div><div class="grid"><div></div><div></div><div></div><div></div><div></div><div></div></div></div>
       </div>
       <div>
         <h3>NoteConnect AI</h3>
@@ -333,7 +323,7 @@ section{background:transparent}
         </div>
       </div>
       <form id="form" novalidate>
-        <label><span>Your name</span><input name="name" placeholder="John Doe" required autocomplete="name"></label>
+        <label><span>Your name</span><input name="name" placeholder="Your name" required autocomplete="name"></label>
         <label><span>Your email</span><input name="email" type="email" placeholder="you@example.com" required autocomplete="email"></label>
         <label><span>Message</span><textarea name="message" placeholder="Write your message here" required></textarea></label>
         <button class="btn solid" type="submit">Send message</button>
